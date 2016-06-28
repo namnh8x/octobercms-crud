@@ -74,5 +74,12 @@ class Plugin extends PluginBase
             ],
         ];
     }
+    
+    public function boot()
+    {
+        \Backend\Models\User::extend(function($model) {
+           $model->belongsTo['team'] = ['Namnguyen\Cruddemo\Models\Team']; 
+        });
+    }
 
 }

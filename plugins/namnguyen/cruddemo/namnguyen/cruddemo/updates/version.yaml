@@ -1,1 +1,5 @@
-1.0.1: First version of crudDemo
+1.0.1: 
+    - First version of crudDemo
+    - add_team_to_users.php
+    - create_teams_table.php
+    - create_projects_table.php
