@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Project
+
+# Model Form Field configuration
+form: $/namnguyen/cruddemo/models/project/fields.yaml
+
+# Model Class name
+modelClass: Namnguyen\CrudDemo\Models\Project
+
+# Default redirect location
+defaultRedirect: namnguyen/cruddemo/projects
+
+# Create page
+create:
+    title: Create Project
+    redirect: namnguyen/cruddemo/projects/update/:id
+    redirectClose: namnguyen/cruddemo/projects
+
+# Update page
+update:
+    title: Edit Project
+    redirect: namnguyen/cruddemo/projects
+    redirectClose: namnguyen/cruddemo/projects
+
+# Preview page
+preview:
+    title: Preview Project

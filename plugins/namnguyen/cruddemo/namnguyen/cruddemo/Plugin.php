@@ -34,7 +34,7 @@ class Plugin extends PluginBase
         return []; // Remove this line to activate
 
         return [
-            'Namnguyen\CrudDemo\Components\MyComponent' => 'myComponent',
+            'Namnguyen\CrudDemo\Components\crudDemo' => 'projectmanagement',
         ];
     }
 
@@ -45,13 +45,17 @@ class Plugin extends PluginBase
      */
     public function registerPermissions()
     {
-        return []; // Remove this line to activate
+        //return []; // Remove this line to activate
 
         return [
-            'namnguyen.cruddemo.some_permission' => [
-                'tab' => 'crudDemo',
-                'label' => 'Some permission'
+            'namnguyen.cruddemo.manage_teams' => [
+                'label' => 'Manage Teams',
+                'tab' => 'SitepointDemo'
             ],
+            'namnguyen.cruddemo.manage_projects' => [
+                'label' => 'Manage Projects',
+                'tab' => 'SitepointDemo'
+            ]
         ];
     }
 
@@ -75,10 +79,21 @@ class Plugin extends PluginBase
         ];
     }
     
+    
     public function boot()
     {
         \Backend\Models\User::extend(function($model) {
-           $model->belongsTo['team'] = ['Namnguyen\Cruddemo\Models\Team']; 
+           $model->belongsTo['team'] = ['Namnguyen\CrudDemo\Models\Team']; 
+        });
+        
+        \Backend\Controllers\Users::extendListColumns(function ($list) {
+            $list->addColumns([
+                'team' => [
+                    'label' => 'Team',
+                    'relation' => 'team',
+                    'select' => 'name'
+                ]
+            ]);
         });
     }
 

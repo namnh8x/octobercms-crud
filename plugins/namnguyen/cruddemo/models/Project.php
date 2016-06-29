@@ -13,6 +13,7 @@ class Project extends Model
      */
     public $table = 'namnguyen_cruddemo_projects';
 
+    protected $dates = ['ends_at'];
     /**
      * @var array Guarded fields
      */
@@ -37,5 +38,15 @@ class Project extends Model
     public $morphMany = [];
     public $attachOne = [];
     public $attachMany = [];
+    
+    public function getTeamIdOptions()
+    {
+        $teams = \Rafie\SitepointDemo\Models\Team::all(['id', 'name']);
+        $teamsOptions = [];
+        $teams->each(function($team) use (&$teamsOptions) {
+            $teamsOptions[$team->id] = $team->name;
+        });
+        return $teamsOptions;
+    }
 
 }

@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Team
+
+# Model Form Field configuration
+form: $/namnguyen/cruddemo/models/team/fields.yaml
+
+# Model Class name
+modelClass: Namnguyen\CrudDemo\Models\Team
+
+# Default redirect location
+defaultRedirect: namnguyen/cruddemo/teams
+
+# Create page
+create:
+    title: Create Team
+    redirect: namnguyen/cruddemo/teams/update/:id
+    redirectClose: namnguyen/cruddemo/teams
+
+# Update page
+update:
+    title: Edit Team
+    redirect: namnguyen/cruddemo/teams
+    redirectClose: namnguyen/cruddemo/teams
+
+# Preview page
+preview:
+    title: Preview Team

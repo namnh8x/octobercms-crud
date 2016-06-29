@@ -7,7 +7,12 @@ use Model;
  */
 class Team extends Model
 {
-
+    use \October\Rain\Database\Traits\Validation;
+    
+    public $rules = [
+        'name' => 'required'  
+    ];
+    
     /**
      * @var string The database table used by the model.
      */
@@ -38,5 +43,9 @@ class Team extends Model
     public $morphMany = [];
     public $attachOne = [];
     public $attachMany = [];
-
+    
+    public function getUsersOptions()
+    {
+        return \Backend\Models\User::lists('login', 'id');
+    }
 }
